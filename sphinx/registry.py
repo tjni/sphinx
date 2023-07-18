@@ -428,6 +428,7 @@ class SphinxComponentRegistry:
             try:
                 mod = import_module(extname)
             except ImportError as err:
+                raise AssertionError(f"{sys.modules['sphinxcontrib'].__path__} | {sys.modules['sphinxcontrib'].__path__._last_parent_path} | {extname} | {sys.path}")
                 logger.verbose(__('Original exception:\n') + traceback.format_exc())
                 raise ExtensionError(__('Could not import extension %s') % extname,
                                      err) from err
